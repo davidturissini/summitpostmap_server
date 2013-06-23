@@ -5,8 +5,14 @@
 
 
 	function connectionString() {
-		return 'mongodb://localhost/foo';
+		var mongoUri = process.env.MONGOLAB_URI || 
+		  process.env.MONGOHQ_URL || 
+		  'mongodb://localhost/foo'; 
+		  
+		return mongoUri;
 	}
+
+
 
 
 	database = function () {
