@@ -1,6 +1,6 @@
 (function () {
 	var mongoose = require('mongoose');
-	var Q = require('Q');
+	var Q = require('q');
 	var database;
 
 
@@ -8,7 +8,7 @@
 		var mongoUri = process.env.MONGOLAB_URI || 
 		  process.env.MONGOHQ_URL || 
 		  'mongodb://localhost/foo'; 
-		  
+
 		return mongoUri;
 	}
 

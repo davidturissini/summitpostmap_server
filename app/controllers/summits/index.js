@@ -1,6 +1,6 @@
 (function () {
 	var Summit = require('./../../models/Summit').Summit;
-	var Q = require('Q');
+	var Q = require('q');
 	var url = require('url');
 	
 
