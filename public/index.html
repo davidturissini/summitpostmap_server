@@ -3,30 +3,11 @@
 	<head>
 		<title>Summitpost map</title>
 		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCY7Iz4DN0iYHwMgJCRp7pJQzIy3iG89Eo&sensor=false"></script>
-		<script data-main="scripts/main.js" src="http://localhost/summitpost_map/client/scripts/lib/require.js"></script>
+		<script data-main="script/map.min.js" src="script/map.min.js"></script>
 		<script>
+
 			require.config({
-				baseUrl:'http://localhost/summitpost_map/client/scripts',
-				paths: {
-    				backbone: 'lib/backbone',
-    				underscore: 'lib/underscore',
-    				jQuery: 'lib/jQuery',
-    				cookies: 'lib/cookies',
-    				mustache: 'lib/mustache',
-    				q: 'lib/q',
-    				google_maps: 'lib/google_maps'
-			    },
 			    shim: {
-				    'underscore': {
-				      exports: '_'
-				    },
-				    'backbone': {
-				      deps: ["underscore"],
-				      exports: 'Backbone'
-				    },
-				    'jQuery': {
-				    	exports:'jQuery'
-				    },
 				    'cookies': {
 				    	exports:'jaaulde.utils.cookies'
 				    },
@@ -35,6 +16,17 @@
 				    }
 				}
 			})
+
+			require(
+				[
+					'main'
+				],
+
+				function () {
+					
+				}
+
+			)
 		</script>
 		<style>
 
