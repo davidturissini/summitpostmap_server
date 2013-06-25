@@ -30,16 +30,42 @@
 		</script>
 		<style>
 
-			.stretch-full { position:absolute; left:0; right:0; top:0; bottom:0; }
+
+			.border { border:1px solid #333; }
+
+			.top { position:absolute; top:0; }
+			.inline-block { display:inline-block; }
+
+			.layer-1 { z-index:10;}
+			.layer-2 { z-index:100; }
+			.layer-3 { z-index:1000; }
+
+
+			.stretch { position:absolute; text-align:center; }
+			.stretch.full { left:0; right:0; top:0; bottom:0; }
+			.stretch.top { left:0; right:0; top:0; }
+			.stretch.center { text-align:center; }
+			.stretch.center .box { display:inline-block; }
+			.stretch.center .box.border { border-top:0; }
+
 
 			.infowindow-summit { position:relative; }
 			.infowindow-summit a { text-decoration:none; color:#06c; }
 			.infowindow-summit h1 { margin-left:135px; line-height:90px; vertical-align:middle; }
 			.infowindow-summit img { float:left; max-width:125px; min-height:90px; }
 
+
+			.stretch .box.loading { padding:10px 40px; background:rgba(255, 255, 255, .8); opacity:0; }
+			body.busy .stretch .box.loading { opacity:1; }
+
+
 		</style>
 	</head>
 	<body>
-		<section id="map" class="stretch-full"></section>
+		<div class="stretch top center layer-3">
+			<div class="box loading border layer-1">Loading...</div>
+		</div>
+		
+		<section id="map" class="stretch full layer-2"></section>
 	</body>
 </html>
