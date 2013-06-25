@@ -55,7 +55,9 @@
 			.infowindow-summit img { float:left; max-width:125px; min-height:90px; }
 
 
-			.stretch .box.loading { padding:10px 40px; background:rgba(255, 255, 255, .8); opacity:0; }
+			.stretch .box.loading { padding:10px 40px; background:rgba(255, 255, 255, .8); opacity:0;
+				-webkit-transition:opacity 200ms;
+			}
 			body.busy .stretch .box.loading { opacity:1; }
 
 
@@ -63,7 +65,7 @@
 	</head>
 	<body>
 		<div class="stretch top center layer-3">
-			<div class="box loading border layer-1">Loading...</div>
+			<div class="box loading border">Loading...</div>
 		</div>
 		
 		<section id="map" class="stretch full layer-2"></section>
