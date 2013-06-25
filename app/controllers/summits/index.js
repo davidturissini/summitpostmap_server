@@ -14,28 +14,30 @@
 		var ne_latitude = query['bounds[ne][latitude]'];
 		var ne_longitude = query['bounds[ne][longitude]'];
 
+		console.log('SW:');
+		console.log(sw_latitude + ',' + sw_longitude);
+		console.log('NE');
+		console.log(ne_latitude + ',' + ne_longitude);
+		console.log('----');
 
 		var query = Summit.find({
 
 			latitude: {
-				$gte:sw_latitude,
-				$lte:ne_latitude
+				$gt:parseFloat(sw_latitude),
+				$lt:parseFloat(ne_latitude)
 			},
 
 			longitude: {
-				$gte:ne_longitude,
-				$lte:sw_longitude
+				$gt:parseFloat(sw_longitude),
+				$lt:parseFloat(ne_longitude)
 			}
 
 
-		})
+		});
 
-		.limit(300)
+		query.limit(300);
 
 		query.execFind(function (err, summits) {
-
-
-
 			res.write(JSON.stringify(summits));
 			deferred.resolve();
 		});

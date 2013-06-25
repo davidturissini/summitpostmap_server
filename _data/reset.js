@@ -8,9 +8,9 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 var summitSchema = mongoose.Schema({
 	title: String,
-	latitude: String,
-	longitude: String,
-	elevation: String,
+	latitude: Number,
+	longitude: Number,
+	elevation: Number,
 	activities: String,
 	season: String,
 	url: String,
