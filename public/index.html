@@ -42,22 +42,26 @@
 			.stretch.center .box { display:inline-block; }
 			.stretch.center .box.border { border-top:0; }
 
-			.stretch.right { right:-200px; top:0; bottom:0; width:200px; background:#fff;
+			.stretch.right { right:-300px; top:0; bottom:0; padding:0 20px; width:260px; background:#333; color:#fff; text-align:left;
 				-webkit-transition:right 400ms ease-out;
 				-moz-transition:right 400ms ease-out;
 				transition:right 400ms ease-out;
 			}
 
-			.slider.vertical { position:absolute; top:70px; bottom:20px; margin-left:27px; background:rgba(255, 255, 255, .8); }
+			.slider.horizontal { margin-left:10px; width:220px; }
 
 			.infowindow-summit { position:relative; }
 			.infowindow-summit a { text-decoration:none; color:#06c; }
 			.infowindow-summit h1 { margin-left:135px; line-height:90px; vertical-align:middle; }
 			.infowindow-summit img { float:left; max-width:125px; min-height:90px; }
 
-			.ui-slider-vertical { height:auto; }
-			.ui-slider-handle { outline:none; }
-			.ui-slider-handle .label { display:block; margin-left:30px; width:145px; text-decoration:none; font-size:12px; }
+			.ui-slider-horizontal { height:3px; background:#fff; border:0; }
+			.ui-slider-horizontal .ui-slider-handle { top:-13px; width:25px; height:25px; border:3px solid #ccc; outline:none; border-radius:25px; background:#fff; }
+			.ui-slider-horizontal .ui-slider-handle .label { display:none; position:absolute; left:-60px; top:-40px; padding:10px; width:120px; text-decoration:none; font-size:12px; background:rgba(255, 255, 255, .9); white-space:nowrap; text-align:center; }
+
+			.ui-slider-horizontal .ui-slider-range { background:#09f; }
+
+			.ui-slider-horizontal .ui-slider-handle.ui-state-active .label { display:block; }
 
 			.stretch .box.loading { padding:10px 40px; background:rgba(255, 255, 255, .8); opacity:0;
 				-webkit-transition:opacity 200ms;
@@ -82,8 +86,8 @@
 			<span id="drawer-handle" class="drawer-handle" title="Filter results"></span>
 			<div class="drawer-contents">
 				<section id="elevation-slider">
-					<h1>Filter by Elevation</h1>
-					<div class="slider vertical"></div>
+					<h1>Elevation</h1>
+					<div class="slider horizontal"></div>
 				</section>
 			</div>
 		</section>
