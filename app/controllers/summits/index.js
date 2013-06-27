@@ -42,7 +42,7 @@
 
 		var query = Summit.find(findParams);
 
-		query.limit(300);
+		query.limit(400);
 
 		query.execFind(function (err, summits) {
 			res.write(JSON.stringify(summits));
