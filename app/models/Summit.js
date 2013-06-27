@@ -1,5 +1,6 @@
 (function () {
 	var mongoose = require('mongoose');
+	var Q = require('q');
 
 
 	var summitSchema = mongoose.Schema({
@@ -17,8 +18,66 @@
 	var Summit = mongoose.model('Summit', summitSchema);
 
 
-	Summit.prototype.findInBounds = function () {
-		
+
+	Summit.findHighest = function () {
+		var deferred = Q.defer();
+		var query = Summit.find({
+
+			latitude:{
+				$ne:null
+			},
+
+			longitude:{
+				$ne:null
+			},
+
+			elevation:{
+				$ne:null
+			}
+
+		});
+
+
+		query.sort({elevation:-1});
+		query.limit(1);
+
+		query.execFind(function (err, summits) {
+			deferred.resolve(summits[0]);
+		});
+
+
+		return deferred.promise;
+
+
+	}
+
+	Summit.findLowest = function () {
+		var deferred = Q.defer();
+		var query = Summit.find({
+			
+			latitude:{
+				$ne:null
+			},
+
+			longitude:{
+				$ne:null
+			},
+
+			elevation:{
+				$ne:null
+			}
+
+		});
+
+		query.sort({elevation:1});
+		query.limit(1);
+
+		query.execFind(function (err, summits) {
+			deferred.resolve(summits[0]);
+		});
+
+
+		return deferred.promise;
 	}
 
 

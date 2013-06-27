@@ -13,14 +13,10 @@
 		var sw_longitude = query['bounds[sw][longitude]'];
 		var ne_latitude = query['bounds[ne][latitude]'];
 		var ne_longitude = query['bounds[ne][longitude]'];
+		var min_elevation = query['elevation[min]'];
+		var max_elevation = query['elevation[max]'];
 
-		console.log('SW:');
-		console.log(sw_latitude + ',' + sw_longitude);
-		console.log('NE');
-		console.log(ne_latitude + ',' + ne_longitude);
-		console.log('----');
-
-		var query = Summit.find({
+		var findParams = {
 
 			latitude: {
 				$gt:parseFloat(sw_latitude),
@@ -33,7 +29,18 @@
 			}
 
 
-		});
+		}
+
+		if (min_elevation !== undefined && max_elevation !== undefined) {
+			findParams.elevation = {
+				$gt:min_elevation,
+				$lt:max_elevation
+			}
+		}
+
+
+
+		var query = Summit.find(findParams);
 
 		query.limit(300);
 

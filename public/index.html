@@ -10,26 +10,15 @@
 			    shim: {
 				    'cookies': {
 				    	exports:'jaaulde.utils.cookies'
-				    },
-				    'q': {
-				    	exports:'Q'
 				    }
 				}
 			})
 
-			require(
-				[
-					'main'
-				],
-
-				function () {
-					
-				}
-
-			)
+			require(['main']);
 		</script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 		<style>
-
+			body { overflow:hidden; }
 
 			.border { border:1px solid #333; }
 
@@ -42,18 +31,33 @@
 
 
 			.stretch { position:absolute; text-align:center; }
-			.stretch.full { left:0; right:0; top:0; bottom:0; }
+			.stretch.full { left:0; right:0; top:0; bottom:0;
+				-webkit-transition:right 400ms ease-out;
+				-moz-transition:right 400ms ease-out;
+				transition:right 400ms ease-out;
+			}
 			.stretch.top { left:0; right:0; top:0; }
+
 			.stretch.center { text-align:center; }
 			.stretch.center .box { display:inline-block; }
 			.stretch.center .box.border { border-top:0; }
 
+			.stretch.right { right:-200px; top:0; bottom:0; width:200px; background:#fff;
+				-webkit-transition:right 400ms ease-out;
+				-moz-transition:right 400ms ease-out;
+				transition:right 400ms ease-out;
+			}
+
+			.slider.vertical { position:absolute; top:70px; bottom:20px; margin-left:27px; background:rgba(255, 255, 255, .8); }
 
 			.infowindow-summit { position:relative; }
 			.infowindow-summit a { text-decoration:none; color:#06c; }
 			.infowindow-summit h1 { margin-left:135px; line-height:90px; vertical-align:middle; }
 			.infowindow-summit img { float:left; max-width:125px; min-height:90px; }
 
+			.ui-slider-vertical { height:auto; }
+			.ui-slider-handle { outline:none; }
+			.ui-slider-handle .label { display:block; margin-left:30px; width:145px; text-decoration:none; font-size:12px; }
 
 			.stretch .box.loading { padding:10px 40px; background:rgba(255, 255, 255, .8); opacity:0;
 				-webkit-transition:opacity 200ms;
@@ -61,12 +65,29 @@
 			body.busy .stretch .box.loading { opacity:1; }
 
 
+			.drawer-handle { position:absolute; left:-30px; top:50px; height:50px; width:30px; background:#333; cursor:pointer; border-radius:5px 0 0 5px; }
+
+			.drawer-handle:hover { background:#000; }
+
+			.drawer-open .stretch.right { right:0; }
+			.drawer-open .stretch.full { right:200px; }
+
 		</style>
 	</head>
 	<body>
 		<div class="stretch top center layer-3">
 			<div class="box loading border">Loading...</div>
 		</div>
+		<section class="stretch right drawer layer-3">
+			<span id="drawer-handle" class="drawer-handle" title="Filter results"></span>
+			<div class="drawer-contents">
+				<section id="elevation-slider">
+					<h1>Filter by Elevation</h1>
+					<div class="slider vertical"></div>
+				</section>
+			</div>
+		</section>
+
 		
 		<section id="map" class="stretch full layer-2"></section>
 	</body>

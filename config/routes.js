@@ -17,6 +17,23 @@
 			
 
 		});
+
+
+		app.get('/summits/highest_lowest', function (req, res) {
+
+			controllerRender = require('./../app/controllers/summits/highest_lowest').render;
+
+
+			res.writeHead(200, { 'Content-Type': 'application/json' });
+			controllerRender(req, res)
+
+			.then(function () {
+				res.end();
+			});
+
+
+		});
+
 	}
 
 	
